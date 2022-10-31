@@ -1,0 +1,21 @@
+---
+title: "About"
+image: profile.jpg
+
+image-height: "30%"
+image-width: "300px"
+about:
+  template: marquee
+  links:
+    - icon: twitter 
+      text: Twitter
+      href: https://twitter.com/datarequena
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/francisco-requena-phd-634b3656/
+    - icon: github
+      text: Github
+      href: https://github.com/frequena
+---
+
+I am a Postdoctoral Associate at Weill Cornell (New York). My current work focuses on the development of machine learning tools for drug discovery in Alzheimer's disease. I did my PhD at the Clinical Bioinformatics lab in the Imagine Institute (Paris) where I worked on the development of computational methods, including machine-learning, for the clinical interpretation of variants in rare disease patients.

@@ -1,0 +1,14 @@
+{
+  "hash": "855c0e9d7149efca4cd0bde9d7853bf8",
+  "result": {
+    "markdown": "---\ntitle: \"Estimating pi value with Monte Carlo simulation\"\nformat: html\neditor: visual \nauthor: Francisco Requena\ndate: 3/5/2020 \nsidebar: true\nimage: images/image.png\ncategories:\n  - animation\n  - R\n---\n\n::: {.cell}\n\n```{.r .cell-code}\n# Load of libraries\nlibrary(tidyverse)\nlibrary(sp)\nlibrary(gganimate)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nn_simulations <- 3000\ndf <- tibble(\n  \n  values_x = runif(n_simulations,0,1),\n  values_y = runif(n_simulations,0,1)\n)\ncircleFun <- function(center=c(0,0), diameter=1, npoints=100, start=0, end=2)\n{\n  tt <- seq(start*pi, end*pi, length.out=npoints)\n  data.frame(x = center[1] + diameter / 2 * cos(tt), \n             y = center[2] + diameter / 2 * sin(tt))\n}\ndat <- circleFun(c(0,0), 2, start=1.5, end=2.5)\ndf <- df %>%\n  rowwise() %>%\n  mutate(label = point.in.polygon(values_x, values_y, dat$x, dat$y, mode.checked=FALSE)) %>%\n  ungroup() %>%\n  mutate(count_in = cumsum(label),\n         id = row_number(),\n         pi_value = 4*(count_in / id))\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(df) +\n  geom_rect(aes(xmin = -1, xmax = 1, ymin = -1, ymax = 1), \n            colour = \"black\", show.legend = FALSE) +\n  geom_polygon(aes(x, y), data = dat, alpha = 0.4) +\n  geom_point(aes(x = values_x, y = values_y, fill = factor(label), group=id), \n             color = 'black', shape = 21, show.legend = FALSE) +\n  theme_minimal() +\n  coord_cartesian(ylim=c(0, 1), xlim = c(0,1)) +\n  transition_reveal(id)  +\n  labs(title = 'Nº of observations: {frame_along} of {n_simulations}',\n       subtitle = 'Estimated value of pi: {df$pi_value[as.integer(frame_along)]}')\n```\n\n::: {.cell-output .cell-output-stderr}\n```\nWarning: No renderer available. Please install the gifski, av, or magick package\nto create animated output\n```\n:::\n\n::: {.cell-output .cell-output-stdout}\n```\nNULL\n```\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(df, aes(id, pi_value)) +\n  geom_line() +\n  geom_point(colour = 'red', size = 3) +\n  transition_reveal(id) +\n  geom_hline(yintercept = pi, color = 'red', linetype= 'dashed') +\n  theme_bw() +\n  labs(title = 'Nº of observations: {frame_along} of {n_simulations}',\n       subtitle = 'Estimated value of pi: {df$pi_value[as.integer(frame_along)]}',\n       x = 'Sample size',\n       y = 'Pi value') +\n    coord_cartesian(ylim=c(0, 4)) \n```\n\n::: {.cell-output .cell-output-stderr}\n```\nWarning: No renderer available. Please install the gifski, av, or magick package\nto create animated output\n```\n:::\n\n::: {.cell-output .cell-output-stdout}\n```\nNULL\n```\n:::\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

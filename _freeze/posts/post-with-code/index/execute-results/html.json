@@ -1,0 +1,14 @@
+{
+  "hash": "3dffa1b400a7ab2277c4f8b2e8837ed6",
+  "result": {
+    "markdown": "---\ntitle: \"Post With Code ole jeje\"\nauthor: \"Francisco Requena\"\ndate: \"2022-10-21\"\ncategories: [news, code, analysis]\nimage: \"image.jpg\"\n---\n\n\nThis is a post with executable code.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
