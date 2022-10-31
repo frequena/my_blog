@@ -3,6 +3,7 @@ project:
 
 website:
   site-url: https://franciscorequena.com
+  google-analytics: "UA-111824788-1"
   twitter-card: true
   title: "Francisco Requena"
   navbar:
