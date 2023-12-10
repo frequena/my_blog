@@ -11,7 +11,6 @@ categories:
   - R
 ---
 
-
 ```{r, normal, message= FALSE}
 # Load of libraries
 library(tidyverse)
@@ -19,8 +18,7 @@ library(sp)
 library(gganimate)
 ```
 
-
-```{r}
+```{r, message= FALSE}
 n_simulations <- 3000
 df <- tibble(
   
@@ -43,9 +41,7 @@ df <- df %>%
          pi_value = 4*(count_in / id))
 ```
 
-
-
-```{r}
+```{r, message= FALSE}
 ggplot(df) +
   geom_rect(aes(xmin = -1, xmax = 1, ymin = -1, ymax = 1), 
             colour = "black", show.legend = FALSE) +
@@ -59,7 +55,7 @@ ggplot(df) +
        subtitle = 'Estimated value of pi: {df$pi_value[as.integer(frame_along)]}')
 ```
 
-```{r}
+```{r, message= FALSE}
 ggplot(df, aes(id, pi_value)) +
   geom_line() +
   geom_point(colour = 'red', size = 3) +

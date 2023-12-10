@@ -10,12 +10,12 @@ website:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
+        href: https://github.com/frequena
       - icon: twitter
-        href: https://twitter.com
+        href: https://twitter.com/datarequena
 format:
   html:
-    theme: cosmo
+    theme: flatly
     css: styles.css
 
 editor: visual
